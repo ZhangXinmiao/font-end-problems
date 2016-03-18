@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>模拟弹出窗口的情况</title>
+    <style>
+      *{margin: 0;padding: 0;}
+      html,body,.lightBox{
+        height: 100%;
+        width: 100%;
+      }
+      .lightBox{
+        position: fixed;
+        top: 0;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .alertBox{
+        width: 30%;
+        height: 30%;
+        text-align: center;
+        background-color: #fff;
+        position: absolute;
+        margin: auto;
+        top: 0; left: 0; bottom: 0; right: 0;
+        background-image: url(../images/image1.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.5;
+      }
+      .textBox{
+        width: 30%;
+        height: 30%;
+        text-align: center;
+        position: absolute;
+        margin: auto;
+        top: 0; left: 0; bottom: 0; right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="button" id="btn" name="name" value="点击我弹出窗口" />
+    </div>
+    <div class="lightBox">
+      <div class="alertBox">
+      </div>
+      <div class="textBox">
+        <p>这是一个弹出框！</p>
+        <p>当背景图片设置为半透明时里面的文字也会受到影响</p>
+        <p>这里我们用了一个方法，就是在alertBox框上加了一个层</p>
+        <p>这层我们当做文字层，也就是把文字放到这一层里</p>
+        <input type="button" id="closebtn" name="name" value="关闭窗口">
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    window.onload = function(){
+      var btn = document.getElementById('btn');
+      var ltBox = document.getElementsByClassName('lightBox')[0];
+      var closebtn = document.getElementById('closebtn');
+      btn.addEventListener("click", function(event){
+        ltBox.style.display = 'block';
+      });
+      closebtn.addEventListener("click", function(event){
+        ltBox.style.display = 'none';
+      });
+    }
+  </script>
+</html>
