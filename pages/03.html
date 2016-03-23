@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style media="screen">
+  .bar,
+  .drop
+  {
+    width: 500px;
+    font: 16px sans-serif;
+    text-align: center;
+  }
+
+  .bar
+  {
+    background: gold;
+  }
+
+  .drop
+  {
+    height: 50px;
+    line-height: 50px;
+    background: lightblue;
+  }
+
+  .hidden
+  {
+    display: none !important;
+  }
+  .bar:hover + .drop {
+    display:block !important;
+  }
+  </style>
+</head>
+<body>
+  <h2>Task:</h2>
+  <p>Please imitate the below dropdown effect by using CSS <strong>ONLY</strong>.</p>
+
+  <div class="bar">Put your mouse here to show dropdown box.</div>
+  <div class="drop hidden">This is a dropdown box.</div>
+
+  <!-- <script type="text/javascript">
+  (function () {
+
+    var bar = document.querySelector('.bar');
+    var drop = document.querySelector('.drop');
+    bar.addEventListener('mouseover', function() {
+      drop.className = drop.className.replace(/hidden/g, ' ');
+    }, false);
+
+    bar.addEventListener('mouseout', function () {
+      drop.className += ' hidden';
+    }, false);
+
+  })();
+  </script> -->
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container"></div>
+  <script type="text/javascript">
+  (function () {
+
+    // You are NOT ALLOWED to modify this method.
+    function longPolling() {
+      setTimeout(function () {
+        var container = document.querySelector('.container');
+        container.innerHTML = '<div id="target" data-info="Hello"></div>';
+      }, 500);
+    }
+
+    longPolling();
+
+    setTimeout(function () {
+        var element = document.querySelector('#target');
+        var data = element ? element.getAttribute('data-info') : 'null';
+        alert(data);
+    }, 1000);
+
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>js自定义事件demo</title>
+  </head>
+  <body>
+    <input type="button" name="jsevent" id="jsbtn" value="js自定义事件" />
+    <script>
+      window.onload = function(){
+        //js自定义事件
+        var Event = {
+          _listener: {},
+          //添加
+          addEvent: function(type, fn){
+            if(typeof this._listener[type] === 'undefined'){
+              this._listener[type] = [];
+            }
+            if(typeof fn === 'function'){
+              this._listener[type].push(fn);
+            }
+            return this;
+          },
+          //触发
+          fireEvent: function(type){
+            var arrayEvent = this._listener[type];
+            if(arrayEvent instanceof Array){
+              for(var i = 0; i < arrayEvent.length; i++){
+                if(typeof arrayEvent[i] === 'function'){
+                  arrayEvent[i]({ type: type });
+                }
+              }
+            }
+            return this;
+          },
+          //删除
+         removeEvent: function(type, fn) {
+           var arrayEvent = this._listeners[type];
+             if (typeof type === "string" && arrayEvent instanceof Array) {
+                 if (typeof fn === "function") {
+                     for (var i=0, length=arrayEvent.length; i<length; i++){
+                         if (arrayEvent[i] === fn){
+                             this._listeners[type].splice(i, 1);
+                             break;
+                         }
+                     }
+                 } else {
+                     delete this._listeners[type];
+                 }
+             }
+             return this;
+         }
+        };
+        Event.addEvent("alert", function(){
+          alert("自定义弹出框事件");
+        });
+        Event.addEvent("confirm", function(){
+          confirm("233333");
+        });
+        var jsbtn = document.getElementById('jsbtn');
+        var dombtn = document.getElementById('dombtn');
+        jsbtn.onclick = function(){
+          Event.fireEvent("alert");
+          Event.fireEvent("confirm");
+          console.log(Event._listener);
+        };
+      };
+    </script>
+  </body>
+</html>
