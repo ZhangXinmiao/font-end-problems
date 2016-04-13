@@ -26,11 +26,11 @@
         background-image: url(../images/image1.jpeg);
         background-repeat: no-repeat;
         background-size: cover;
-        opacity: 0.5;
       }
       .textBox{
         width: 30%;
         height: 30%;
+        color: #fff;
         text-align: center;
         position: absolute;
         margin: auto;
@@ -137,7 +137,7 @@
     <div class="lightBox">
       <div class="alertBox">
       </div>
-      <div class="textBox">
+      <div class="textBox" id="textBox">
         <p>这是一个弹出框！</p>
         <p>当背景图片设置为半透明时里面的文字也会受到影响</p>
         <p>这里我们用了一个方法，就是在alertBox框上加了一个层</p>
@@ -156,6 +156,11 @@
       });
       closebtn.addEventListener("click", function(event){
         ltBox.style.display = 'none';
+      });
+      ltBox.addEventListener("click", function(event){
+        if(event.target.id !== "textBox"){
+          ltBox.style.display = 'none';
+        }
       });
     }
   </script>
